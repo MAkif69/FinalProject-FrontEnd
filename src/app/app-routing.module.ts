@@ -3,12 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { ProductAddedComponent } from './components/product-added/product-added.component';
 import { ProductComponent } from './components/product/product.component';
+import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
   {path:"",pathMatch:"full",component:ProductComponent},
   {path:"products",component:ProductComponent},
   {path:"products/category/:categoryId",component:ProductComponent},
-  {path:"products/add",component:ProductAddedComponent},
+  {path:"products/add",component:ProductAddedComponent, canActivate:[LoginGuard]},
   {path:"login",component:LoginComponent}
 ];
 
